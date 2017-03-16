@@ -1,0 +1,153 @@
+/* Document set up */
+body, html {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	background-color: #659C81;
+	-webkit-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+.section {
+	width: 100%;
+	position: relative;
+}
+
+#landing-section {
+	height: 90px;
+}
+
+#food-image-section {
+	height: 500px;
+}
+
+.navbar-container {
+	top: 0;
+	position: absolute;
+	height: 90px;
+	width: 100%;
+	background-color: #659C81;
+	text-align: center;
+	z-index: 1;
+	border-bottom: 2px solid white;
+}
+
+.navbar-item {
+	font-weight: 700;
+	font-size: 16px;
+	color: white;
+	padding: 20px 5px 10px 5px;
+	font-family: Charter;
+	display: inline-block;
+}
+
+.navbar-item a {
+	text-decoration: none;
+	color: white;
+	background-color: none;
+}
+
+#back_icon {
+	float: left;
+	margin-left: 10px;
+}
+
+#search_icon {
+	float: right;
+	margin-right: 10px;
+}
+
+#home_icon {
+	float: right;
+}
+
+#title {
+	text-align: center;
+	width: 100px;
+	height: 100px;
+	float: none;
+	margin-left: 50px;
+	font-size: 56px;
+	font-family: 'Jura', sans-serif;
+}
+
+#food-image-container {
+	width: 700px;
+	height: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+
+	/*background-image: url(http://www.harusushi.com/wp-content/uploads/2015/06/sushi_lunch.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;*/
+}
+
+#food-image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+#recipe-section {
+	height: 100%;
+}
+
+.recipe-container {
+	width: 80%;
+	height: 80%;
+	/*border: 1px solid white;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#ingredients {
+	float: left;
+	max-width: 200px;
+	margin: 0;
+	padding: 16px;
+	font-weight: bolder;
+	line-height: 2.0rem;
+}
+
+#ingredients ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#ingredients ul li {
+	color: white;
+	font-size: 16px;
+	font-family: 'Jura', sans-serif;
+}
+
+#preparation {
+	height: 80%;
+	margin-left: 170px;
+	border-left: 1px solid white;
+	padding-left: 32px;
+	padding-right: 32px;
+	overflow: hidden;
+	color: white;
+	line-height: 2.0rem;
+	font-family: 'Jura', sans-serif;
+}
+
+#preparation h1 {
+	font-weight: bold;
+	font-size: 30px;
+	padding-bottom: 10px;
+}
+
+#preparation p {
+	font-weight: bolder;
+	font-size: 20px;	
+}
+
+
+
+
+
+
+
