@@ -43,7 +43,12 @@
     
     <div id="navbar">
     <div id="back-icon">
-      <a href="home.html"><span class="glyphicon glyphicon-triangle-left" style="font-size:20px"></span></a>
+      <script>
+      function goBack() {
+          window.history.back()
+      }
+      </script>
+      <a href="javascript:goBack()"><span class="glyphicon glyphicon-triangle-left" style="font-size:20px"></span></a>
     </div>
 
     <h1>ADD RECIPE</h1>
