@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="shortcut icon" href="favicon.ico">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SOUS CHEF</title>
@@ -16,6 +15,69 @@
     $(document).ready(function(){
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
         var db = JSON.stringify(data);
+        console.log(db);
+
+        var parse = JSON.parse(db);
+        
+
+        var recipeList = parse.Items;
+
+
+        console.log(recipeList.length);
+
+        for (i = 0; i < recipeList.length; i++) {
+
+          var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
+          console.log(curRecipe)
+          var curName = curRecipe.RecipeName;
+          var curImage = curRecipe.Image;
+
+          console.log(curName);
+          console.log(curImage);
+
+
+
+
+
+          var col = document.createElement('div');
+          col.setAttribute('class', 'col-sm-3');
+          col.innerText = curName
+          document.getElementById('row-container').appendChild(col);
+
+          var tile = document.createElement('div');
+          tile.setAttribute('class', 'recipe-tile');
+          col.appendChild(tile);
+
+
+          var image = document.createElement('img');
+          image.setAttribute('src', curImage);
+          image.setAttribute('height', '250');
+          image.setAttribute('width', '285');
+          tile.appendChild(image);
+
+          var icon = document.createElement('div');
+          icon.setAttribute('class', 'links');
+          tile.appendChild(icon);
+
+          var ingredients = document.createElement('span');
+          ingredients.setAttribute('class', 'glyphicon glyphicon-info-sign');
+          ingredients.setAttribute('font-size', '20px');
+          ingredients.innerText = ' ingredients';
+          icon.appendChild(ingredients);
+
+          var directions = document.createElement('span');
+          directions.setAttribute('class', 'glyphicon glyphicon-th-list');
+          directions.setAttribute('font-size', '20px');
+          directions.innerText = ' directions';
+          icon.appendChild(directions);
+
+
+        }
+
+
+
+
+        // var recipeName = 
       });
     });
     </script>
@@ -30,110 +92,82 @@
   
   <body>
     <!-- Home -->
-    <div class="site-wrapper">
-    <div class="container">
-    <div id="add-icon">
-      <a href="add.html"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span></a>
-    </div>
-    <div id="settings-icon">
-      <span class="glyphicon glyphicon-cog" style="font-size:20px"></span>
-    </div>
-    <div id="title">
-      <h1>SOUS CHEF</h1>
-    </div>
-    
-    <div class="row">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-4">
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-        <span class="glyphicon glyphicon-search form-control-feedback" style="font-size:20px; padding-left:30px"></span>
-        </div>
+    <div class="site-wrapper", id=''>
+      <div class="container">
+      
+      <!-- Add Icon -->
+      <div id="add-icon">
+        <a href="add.html"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span></a>
       </div>
-      <div class="col-sm-4"></div>
-    </div>
-    </div>
-
-    <div class="container-fluid">
+      
+      <!-- Settings Icon -->
+      <div id="settings-icon">
+        <span class="glyphicon glyphicon-cog" style="font-size:20px"></span>
+      </div>
+      
+      <!-- Title Part -->
+      <div id="title">
+        <h1>SOUS CHEF</h1>
+      </div>
+      
+      <!-- Search Bar -->
       <div class="row">
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+          <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <span class="glyphicon glyphicon-search form-control-feedback" style="font-size:20px; padding-left:30px"></span>
+          </div>
         </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
+        <div class="col-sm-4"></div>
+      </div>
       </div>
 
-      <div class="row">
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      </div>
+          <div class="container-fluid" id='dish-container'>
+            <div class="row" id='row-container'>
+              <!-- <div class="col-sm-3">Recipe Name
+                <div class="recipe-tile">
+                  <div class="links">
+                    <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
+                    <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
+                  </div>
+                </div>
+              </div> -->
 
-      <div class="row">
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
-      <div class="col-sm-3"><div class="recipe-tile">
-        <div class="links">
-        <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-        <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-        </div>
-      </div></div>
+<!-- 
+              <div class="col-sm-3">Recipe Name
+                <div class="recipe-tile">
+
+                  <div class="links">
+                    <img src="https://i.ytimg.com/vi/jPLJbSp6vKY/maxresdefault.jpg" height='250' width='285'>
+
+                  </div>
+
+
+                  
+                  <div class="links">
+                    <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
+                    <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
+                  </div>
+
+
+                </div>
+              </div> -->
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+          </div>
       </div>
     </div>
     
