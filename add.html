@@ -17,7 +17,7 @@
         $.ajax({
           url: 'https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes',
           type: 'POST',
-          data: JSON.stringify("Recipes": ""),
+          data: JSON.stringify("Recipes": /* stufF??? */),
           success: function(data) {
             error: function(xhr, ajaxOptions, thrownError) {
               alert("Error");
@@ -43,7 +43,7 @@
     
     <div id="navbar">
     <div id="back-icon">
-      <a href="C:/bootstrap-3.3.7-dist/home.html"><span class="glyphicon glyphicon-triangle-left" style="font-size:20px"></span></a>
+      <a href="home.html"><span class="glyphicon glyphicon-triangle-left" style="font-size:20px"></span></a>
     </div>
 
     <h1>ADD RECIPE</h1>
@@ -53,7 +53,7 @@
     </div>
 
     <div id="home-icon">
-      <a href="C:/bootstrap-3.3.7-dist/home.html"><span class="glyphicon glyphicon-home" style="font-size:20px"></span></a>
+      <a href="home.html"><span class="glyphicon glyphicon-home" style="font-size:20px"></span></a>
     </div>
     </div>
 
@@ -63,7 +63,7 @@
       <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group">Recipe name:
         <input type="text" class="form-control" placeholder="Enter recipe name">
         </div>
       </div>
@@ -73,7 +73,10 @@
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-          <div id="img"><button type="button" class="btn btn-outline-primary">UPLOAD IMAGE</button></div>
+          <div class="form-group">Image:  
+          <input type="text" class="form-control" id="url" placeholder="Enter url for dish image">
+          </div>
+          <!-- <div id="img"><button type="button" class="btn btn-outline-primary">UPLOAD IMAGE</button></div> -->
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -81,9 +84,21 @@
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-          <div class="form-group">
-          <textarea class="form-control" rows="10" placeholder="List each ingredient on a new line."></textarea>
+          <div class="form-group" id='ilist2'>Ingredients:  
+          <input type="text" class="form-control" id="url" placeholder="Enter ingredient">
           </div>
+
+          <button id='addi' onclick='addI()' class="btn btn-outline-primary">ADD INGREDIENT</button>
+
+          <script >
+            function addI() {
+              var mi = document.createElement("input");
+              mi.setAttribute('class', 'form-control');
+              mi.setAttribute('type', 'text');
+              mi.setAttribute('placeholder', 'Enter ingredient');
+              document.getElementById('ilist2').appendChild(mi);
+            }
+          </script>
         </div>
         <div class="col-sm-3"></div>
       </div>
@@ -91,9 +106,20 @@
       <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-          <div class="form-group">
-          <textarea class="form-control" rows="10" id="instructions" placeholder="List each step on a new line."></textarea>
+          <div class="form-group" id='dlist2'>Directions:  
+          <input type="text" class="form-control" id="url" placeholder="Enter instruction">
           </div>
+
+          <button id='addd' onclick='addD()' class="btn btn-outline-primary">ADD INSTRUCTION</button>
+
+          <script >
+            function addD() {
+              var mi = document.createElement("input");
+              mi.setAttribute('type', 'text');
+              mi.setAttribute('placeholder', 'Enter instruction');
+              document.getElementById('dlist2').appendChild(mi);
+            }
+          </script>
         </div>
         <div class="col-sm-3"></div>
       </div>

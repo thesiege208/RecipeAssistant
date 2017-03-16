@@ -48,13 +48,18 @@ h1 {
 	text-align: center;
 }
 
-input, button, textarea {
+input, button {
 	width: 100%;
 	font-size:20px;
 	font-family: 'Jura', sans-serif;
 }
 
+input {
+	margin-bottom: 5px;
+}
+
 button {
+	width: 50%;
 	background-color: #196d4e;
 	color: #FFFFFF;
 }
@@ -66,10 +71,17 @@ button {
 
 .form-group {
 	margin-bottom: 0px;
+	font-size:20px;
+	font-family: 'Jura', sans-serif;
 }
 
-#ingredients, #instructions {
-	height: 200px;
+#ilist2, #dlist2 {
+	margin-bottom: 10px;
+}
+
+#submit {
+	background-color: #508475;
+	width: 100%;
 }
 
 .row-1.col-sm-12 {
