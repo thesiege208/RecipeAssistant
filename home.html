@@ -9,7 +9,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Jura:300|Alegreya+Sans+SC:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300|Alegreya+Sans+SC:300|Alegreya+
+    Sans" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="script.js"></script>
@@ -32,12 +33,12 @@
           var curName = curRecipe.RecipeName;
           var curImage = curRecipe.Image;
 
-          // console.log(curName);
+          console.log(curName);
           console.log(curImage);
 
           var col = document.createElement('div');
           col.setAttribute('class', 'col-sm-3');
-          col.innerText = curName
+          // col.innerText = curName;
           document.getElementById('row-container').appendChild(col);
 
           var tile = document.createElement('div');
@@ -51,12 +52,12 @@
           var image = document.createElement('img');
           image.setAttribute('src', curImage);
           image.setAttribute('height', '250');
-          image.setAttribute('width', '285');
+          image.setAttribute('width', '250');
           tile.appendChild(image);
 
           var icon = document.createElement('div');
           icon.setAttribute('class', 'links');
-          tile.appendChild(icon);
+          over.appendChild(icon);
 
           var ingredients = document.createElement('span');
           ingredients.setAttribute('class', 'glyphicon glyphicon-info-sign');
@@ -90,12 +91,12 @@
       
       <!-- Add Icon -->
       <div id="add-icon">
-        <a href="add.html"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span></a>
+        <a href="add.html"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span><br />Add Recipe</a>
       </div>
       
       <!-- Settings Icon -->
       <div id="settings-icon">
-        <span class="glyphicon glyphicon-cog" style="font-size:20px"></span>
+        <span class="glyphicon glyphicon-cog" style="font-size:20px"></span><br />Settings
       </div>
       
       <!-- Title Part -->
@@ -109,7 +110,7 @@
         <div class="col-sm-4">
           <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
-          <span class="glyphicon glyphicon-search form-control-feedback" style="font-size:20px; padding-left:30px"></span>
+          <span class="glyphicon glyphicon-search form-control-feedback" style="font-size:20px"></span>
           </div>
         </div>
         <div class="col-sm-4"></div>
