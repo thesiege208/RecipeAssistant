@@ -24,22 +24,10 @@
         var parse = JSON.parse(db);
         var recipeList = parse.Items;
 
-        count = 1
 
         for (i = 0; i < recipeList.length; i++) {
 
 
-          if (count == 1) {
-            var curRow = document.createElement('div');
-            curRow.setAttribute('class', 'row');
-            curRow.setAttribute('id', 'row-container' + String(count));
-            document.getElementById('dish-container').appendChild(curRow);
-
-          } else if (count == 4) {
-            count = 1;
-          } else {
-            count += 1;
-          }
 
 
 
