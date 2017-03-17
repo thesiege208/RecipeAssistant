@@ -24,9 +24,12 @@
         var parse = JSON.parse(db);
         var recipeList = parse.Items;
 
-        console.log(recipeList.length);
 
         for (i = 0; i < recipeList.length; i++) {
+
+
+
+
 
           var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
           console.log(curRecipe)
@@ -36,28 +39,30 @@
           console.log(curName);
           console.log(curImage);
 
+
+
+
+
           var col = document.createElement('div');
           col.setAttribute('class', 'col-sm-3');
-          // col.innerText = curName;
-          document.getElementById('row-container').appendChild(col);
+          col.innerText = curName
+          contain_id = 'row-container' + String(count)
+          document.getElementById(contain_id).appendChild(col);
 
           var tile = document.createElement('div');
           tile.setAttribute('class', 'recipe-tile');
           col.appendChild(tile);
 
-          var over = document.createElement('div');
-          over.setAttribute('class', 'overlay');
-          tile.appendChild(over);
 
           var image = document.createElement('img');
           image.setAttribute('src', curImage);
           image.setAttribute('height', '250');
-          image.setAttribute('width', '250');
+          image.setAttribute('width', '285');
           tile.appendChild(image);
 
           var icon = document.createElement('div');
           icon.setAttribute('class', 'links');
-          over.appendChild(icon);
+          tile.appendChild(icon);
 
           var ingredients = document.createElement('span');
           ingredients.setAttribute('class', 'glyphicon glyphicon-info-sign');
@@ -70,6 +75,8 @@
           directions.setAttribute('font-size', '20px');
           directions.innerText = ' directions';
           icon.appendChild(directions);
+
+
         }
       });
     });
