@@ -14,16 +14,96 @@
     <script>
     $(document).ready(function(){
       $("#submit").click(function(){
-        $.ajax({
-          url: 'https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes',
-          type: 'POST',
-          data: JSON.stringify("Recipes": /* stufF??? */),
-          success: function(data) {
-            error: function(xhr, ajaxOptions, thrownError) {
-              alert("Error");
+
+
+
+        var recipeName = document.getElementById('Rname').value;
+        var imageLink = document.getElementById('url').value;
+
+        if (recipeName.length == 0) {
+          alert("Please fill in recipe name");
+          return;
+        }
+
+        if (imageLink.length == 0) {
+          alert("Please fill in image url");
+          return;
+        }
+
+
+        var ingre_list = document.getElementsByClassName('form-ing');
+
+        var tmps = ""
+        for (j = 0; j < ingre_list.length; j++) {
+          var curIngre = ingre_list[j].value;
+          if (curIngre.length != 0) {
+            if (j == ingre_list.length - 1) {
+              tmps = tmps + curIngre;
+            } else {
+              tmps = tmps + curIngre + "\n";
+
+            }
+
+
+          }
+        }
+
+
+
+        if (tmps.length == 0) {
+          console.log(tmps);
+          alert("Please put at least one ingredient");
+          return;
+        }
+
+
+        var direc_list = document.getElementsByClassName('form-inst');
+        var dirs = ""
+
+        for (i = 0; i < direc_list.length; i++) {
+          var curDirec = direc_list[i].value;
+
+          if (curDirec.length != 0) {
+            if (i == direc_list.length - 1) {
+              dirs = dirs + curDirec;
+            }
+            else {
+              dirs = dirs + curDirec + "\n";
+
             }
           }
+        }
+
+        if (dirs.length == 0) {
+          alert("Please put at least one direction");
+          return;
+        }
+
+        console.log(recipeName);
+        console.log(imageLink);
+        console.log(tmps);
+        console.log(dirs);
+
+
+        // String lower = (String) recipeName
+        // https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes
+        // https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/RecipeUpdate
+        $.post("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS", JSON.stringify({
+            "type": "POST", 
+            "data": {
+                "TableName": "Recipes",
+                //New item information to be posted 
+                "Item": {
+                    "RecipeName": recipeName.toLowerCase(), 
+                    "Ingredients" : tmps,
+                    "Directions" : dirs,
+                    "Image": imageLink,
+                    }}}), 
+        function(data, status){
+        alert(status);
         });
+
+
       });
     });
     </script>
@@ -69,7 +149,7 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
         <div class="form-group">Recipe name:
-        <input type="text" class="form-name" placeholder="Enter recipe name">
+        <input type="text" class="form-name" id='Rname' placeholder="Enter recipe name">
         </div>
       </div>
       <div class="col-sm-3"></div>
@@ -90,7 +170,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
           <div class="form-group" id='ilist2'>Ingredients:  
-          <input type="text" class="form-ing" id="url" placeholder="Enter ingredient">
+          <input type="text" class="form-ing" id="ingres" placeholder="Enter ingredient">
           </div>
 
           <button id='addi' onclick='addI()' class="btn btn-outline-primary">ADD INGREDIENT</button>
@@ -98,7 +178,7 @@
           <script >
             function addI() {
               var mi = document.createElement("input");
-              mi.setAttribute('class', 'form-control');
+              mi.setAttribute('class', 'form-ing');
               mi.setAttribute('type', 'text');
               mi.setAttribute('placeholder', 'Enter ingredient');
               document.getElementById('ilist2').appendChild(mi);
@@ -112,7 +192,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
           <div class="form-group" id='dlist2'>Directions:  
-          <input type="text" class="form-inst" id="url" placeholder="Enter instruction">
+          <input type="text" class="form-inst" id="direcs" placeholder="Enter instruction">
           </div>
 
           <button id='addd' onclick='addD()' class="btn btn-outline-primary">ADD INSTRUCTION</button>
@@ -120,7 +200,7 @@
           <script >
             function addD() {
               var mi = document.createElement("input");
-              mi.setAttribute('class', 'form-control');
+              mi.setAttribute('class', 'form-inst');
               mi.setAttribute('type', 'text');
               mi.setAttribute('placeholder', 'Enter instruction');
               document.getElementById('dlist2').appendChild(mi);
