@@ -21,10 +21,7 @@
         console.log(db);
 
         var parse = JSON.parse(db);
-        
-
         var recipeList = parse.Items;
-
 
         console.log(recipeList.length);
 
@@ -38,10 +35,6 @@
           console.log(curName);
           console.log(curImage);
 
-
-
-
-
           var col = document.createElement('div');
           col.setAttribute('class', 'col-sm-3');
           col.innerText = curName
@@ -50,7 +43,6 @@
           var tile = document.createElement('div');
           tile.setAttribute('class', 'recipe-tile');
           col.appendChild(tile);
-
 
           var image = document.createElement('img');
           image.setAttribute('src', curImage);
@@ -73,13 +65,7 @@
           directions.setAttribute('font-size', '20px');
           directions.innerText = ' directions';
           icon.appendChild(directions);
-
-
         }
-
-
-
-
         // var recipeName = 
       });
     });
@@ -110,7 +96,7 @@
       
       <!-- Title Part -->
       <div id="title">
-        <a href="#"><h1>RECIPE ASSISTANT</h1></a>
+        <h1>RECIPE ASSISTANT</h1>
       </div>
       
       <!-- Search Bar -->
@@ -156,20 +142,7 @@
 
                 </div>
               </div> -->
-
-
-
-
-
-
-
             </div>
-
-
-
-
-
-
           </div>
       </div>
     </div>
