@@ -68,12 +68,21 @@ h1 {
 	position: relative;
 }
 
+.img {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
 .overlay {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	background-color: #659C81;
+	border-radius: 3px;
 	overflow: hidden;
 	height: 0;
 	transition: .5s ease;
@@ -85,9 +94,9 @@ h1 {
 }
 
 .links {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	font-family: 'Alegreya Sans SC', sans-serif;
+	margin-top: 35%;
+	font-family: 'Alegreya Sans', sans-serif;
+	text-align: center;
 }
 
 .links span {
