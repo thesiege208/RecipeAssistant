@@ -64,6 +64,26 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #659C81;
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	transition: .5s ease;
+}
+
+.recipe-tile:hover .overlay {
+	height: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 span {
 	margin-right: 20px;
 }

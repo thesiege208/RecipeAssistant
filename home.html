@@ -32,7 +32,7 @@
           var curName = curRecipe.RecipeName;
           var curImage = curRecipe.Image;
 
-          console.log(curName);
+          // console.log(curName);
           console.log(curImage);
 
           var col = document.createElement('div');
@@ -43,6 +43,10 @@
           var tile = document.createElement('div');
           tile.setAttribute('class', 'recipe-tile');
           col.appendChild(tile);
+
+          var over = document.createElement('div');
+          over.setAttribute('class', 'overlay');
+          tile.appendChild(over);
 
           var image = document.createElement('img');
           image.setAttribute('src', curImage);
