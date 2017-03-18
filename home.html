@@ -9,8 +9,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Jura:300|Alegreya+Sans+SC:300|Alegreya+
-    Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura:300|Alegreya+Sans+SC:300|Alegreya+Sans" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src="script.js"></script>
@@ -38,40 +37,49 @@
 
           var col = document.createElement('div');
           col.setAttribute('class', 'col-sm-3');
-          // col.innerText = curName;
           document.getElementById('row-container').appendChild(col);
 
           var tile = document.createElement('div');
           tile.setAttribute('class', 'recipe-tile');
           col.appendChild(tile);
 
+          var filt = document.createElement('div');
+          filt.setAttribute('class', 'filter');
+          tile.appendChild(filt);
+
+          var name = document.createElement('p');
+          name.innerText = curName;
+          filt.appendChild(name);
+
           var over = document.createElement('div');
           over.setAttribute('class', 'overlay');
           tile.appendChild(over);
 
           var image = document.createElement('img');
+          image.setAttribute('class', 'img-responsive');
           image.setAttribute('src', curImage);
-          image.setAttribute('height', '250');
-          image.setAttribute('width', '250');
           tile.appendChild(image);
 
-          var icon = document.createElement('div');
-          icon.setAttribute('class', 'links');
-          over.appendChild(icon);
+          var mods = document.createElement('div');
+          mods.setAttribute('class', 'links');
+          over.appendChild(mods);
 
-          var ingredients = document.createElement('span');
-          ingredients.setAttribute('class', 'glyphicon glyphicon-info-sign');
-          ingredients.setAttribute('font-size', '20px');
-          ingredients.innerText = ' ingredients';
-          icon.appendChild(ingredients);
+          var ingredients = document.createElement('a');
+          ingredients.setAttribute('href', '#');
+          ingredients.setAttribute('data-toggle', 'modal');
+          ingredients.setAttribute('data-target', '#ingModal');
+          ingredients.setAttribute('id', 'ing-link');
+          ingredients.innerText = '\nINGREDIENTS';
+          mods.appendChild(ingredients);
 
-          var directions = document.createElement('span');
-          directions.setAttribute('class', 'glyphicon glyphicon-th-list');
-          directions.setAttribute('font-size', '20px');
-          directions.innerText = ' directions';
-          icon.appendChild(directions);
+          var directions = document.createElement('a');
+          directions.setAttribute('href', '#');
+          directions.setAttribute('data-toggle', 'modal');
+          directions.setAttribute('data-target', '#dirModal');
+          directions.setAttribute('id', 'dir-link');
+          directions.innerText = '\nDIRECTIONS';
+          mods.appendChild(directions);
         }
-        // var recipeName = 
       });
     });
     </script>
@@ -91,7 +99,7 @@
       
       <!-- Add Icon -->
       <div id="add-icon">
-        <a href="add.html"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span><br />Add Recipe</a>
+        <a href="#add"><span class="glyphicon glyphicon-plus" style="font-size:20px"></span><br />Add Recipe</a>
       </div>
       
       <!-- Settings Icon -->
@@ -115,42 +123,83 @@
         </div>
         <div class="col-sm-4"></div>
       </div>
-      </div>
 
-          <div class="container-fluid" id='dish-container'>
-            <div class="row" id='row-container'>
-              <!-- <div class="col-sm-3">Recipe Name
-                <div class="recipe-tile">
-                  <div class="links">
-                    <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-                    <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-                  </div>
-                </div>
-              </div> -->
-
-<!-- 
-              <div class="col-sm-3">Recipe Name
-                <div class="recipe-tile">
-
-                  <div class="links">
-                    <img src="https://i.ytimg.com/vi/jPLJbSp6vKY/maxresdefault.jpg" height='250' width='285'>
-
-                  </div>
-
-
-                  
-                  <div class="links">
-                    <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
-                    <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
-                  </div>
-
-
-                </div>
-              </div> -->
+      <!-- ingredients modal box-->
+      <div id="ingModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">INGREDIENTS</h2>
+            </div>
+            <div class="modal-body">
+              <!-- dynamically add ingredients -->
+              <!-- sample layout -->
+              <input type="checkbox"> sample ingredient<br />
+              <input type="checkbox"> sample ingredient<br />
+              <input type="checkbox"> sample ingredient<br />
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-primary" data-dismiss="modal">CLOSE</button>
             </div>
           </div>
+        </div>
       </div>
+
+      <!-- directions modal box -->
+      <div id="dirModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">DIRECTIONS</h2>
+            </div>
+            <div class="modal-body">
+              <!-- dynamically add directions -->
+              (use recipe page layout)
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-primary" data-dismiss="modal">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="container-fluid" id='dish-container'>
+        <div class="row" id='row-container'>
+          <!-- <div class="col-sm-3">Recipe Name
+            <div class="recipe-tile">
+              <div class="links">
+                <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
+                <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
+              </div>
+            </div>
+          </div> -->
+
+<!-- 
+          <div class="col-sm-3">Recipe Name
+            <div class="recipe-tile">
+
+              <div class="links">
+                <img src="https://i.ytimg.com/vi/jPLJbSp6vKY/maxresdefault.jpg" height='250' width='285'>
+
+              </div>
+
+
+              
+              <div class="links">
+                <span class="glyphicon glyphicon-info-sign" style="font-size:20px"></span>
+                <span class="glyphicon glyphicon-th-list" style="font-size:20px"></span>
+              </div>
+
+
+            </div>
+          </div> -->
+        </div>
+      </div>
+    
     </div>
+
+    <div class="ng-view"></div>
     
     <!-- Footer -->
     <div class="container-fluid-2">

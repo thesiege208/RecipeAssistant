@@ -9,12 +9,7 @@ recipeAssistant.config(function($routeProvider) {
 			templateUrl : 'add.html',
 			controller : 'addController'
 		})
-		.when('/recipe', {
-			templateUrl : 'recipe.html',
-			controller : 'recipeController'
-		});
 });
 
-recipeAssistant.controller('mainController', function($scope));
-recipeAssistant.controller('addController', function($scope));
-recipeAssistant.controller('recipeController', function($scope));
+recipeAssistant.controller('mainController');
+recipeAssistant.controller('addController');

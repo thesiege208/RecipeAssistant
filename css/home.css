@@ -53,6 +53,7 @@ h1 {
 	font-family: 'Jura', sans-serif;
 	position: center;
 	margin-top: 100px;
+	text-shadow: 0px 3px 3px rgba(63, 107, 169, 0.5);
 }
 
 .form-group {
@@ -68,13 +69,37 @@ h1 {
 	position: relative;
 }
 
-.img {
-	position: absolute;
+img {
 	bottom: 0;
 	left: 0;
 	right: 0;
 	top: 0;
+	width: 100%;
 	overflow: hidden;
+	min-height: 300px;
+	border-radius: 3px;
+}
+
+.filter {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(87, 130, 142, 0.3);
+	overflow: hidden;
+	border-radius: 3px;
+}
+
+.filter p {
+	font-family: 'Jura', sans-serif;
+	font-size: 40px;
+	color: rgba(255, 255, 255, 1.0);
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	text-shadow: 0px 3px 3px rgba(63, 107, 169, 0.5);
 }
 
 .overlay {
@@ -82,10 +107,11 @@ h1 {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: #529677;
+	background-color: #73c4a3;
 	border-radius: 3px;
 	overflow: hidden;
 	height: 0;
+	opacity: 0.9;
 	transition: .5s ease;
 }
 
@@ -95,13 +121,37 @@ h1 {
 }
 
 .links {
-	margin-top: 35%;
-	font-family: 'Alegreya Sans', sans-serif;
-	text-align: center;
+	line-height: 75px;
 }
 
-.links span {
-	margin-right: 20px;
+.links a {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 24px;
+	text-align: center;
+	text-shadow: 0px 3px 3px rgba(63, 107, 169, 0.5);
+}
+
+#ingModal, #dirModal {
+	color: #196d4e;
+	background-color: rgba(198, 255, 230, 0.8);
+}
+
+h2 {
+	font-family: 'Jura', sans-serif;
+	font-size: 30px;
+}
+
+.modal-body {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 20px;
+}
+
+button {
+	width: 100%;
+	background-color: #196d4e;
+	color: #FFFFFF;
+	font-size:20px;
+	font-family: 'Jura', sans-serif;
 }
 
 .row-1.col-sm-12 {
