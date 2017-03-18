@@ -9,6 +9,9 @@ recipeAssistant.config(function($routeProvider) {
 			templateUrl : 'add.html',
 			controller : 'addController'
 		})
+		.otherwise({
+			redirectTo:'/',
+		})
 });
 
 recipeAssistant.controller('mainController');
