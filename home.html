@@ -7,14 +7,14 @@
     <title>RECIPE ASSISTANT</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/home.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jura:300|Alegreya+Sans+SC:300|Alegreya+Sans" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <script>
     $(document).ready(function(){
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
@@ -93,9 +93,9 @@
     <![endif]-->
   </head>
   
-  <body ng-controller="mainController">
+  <body>
     <!-- Home -->
-    <div class="site-wrapper", id='main'>
+    <div class="site-wrapper">
       <div class="container">
       
       <!-- Add Icon -->
@@ -199,8 +199,6 @@
       </div>
     
     </div>
-
-    <div class="ng-view"></div>
     
     <!-- Footer -->
     <div class="container-fluid-2">
