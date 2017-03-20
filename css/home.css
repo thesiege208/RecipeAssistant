@@ -141,6 +141,11 @@ img {
 h2 {
 	font-family: 'Jura', sans-serif;
 	font-size: 30px;
+	font-weight: bold;
+}
+
+#ingredients h2 {
+	top: -10px;
 }
 
 .modal-body {
