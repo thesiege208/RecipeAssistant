@@ -21,7 +21,7 @@
       // console.log(nowName);
       var rTitle = document.getElementById('recipe-title');
       // console.log(nowName);
-      rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
+      rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ').toUpperCase();
 
       dbname = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
