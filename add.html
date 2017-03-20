@@ -58,10 +58,10 @@
 
           if (curDirec.length != 0) {
             if (i == direc_list.length - 1) {
-              dirs = dirs + curDirec;
+              dirs = dirs + (i+1) + ". " + curDirec;
             }
             else {
-              dirs = dirs + curDirec + "\n";
+              dirs = dirs + (i+1) + ". " + curDirec + "\n";
             }
           }
         }
