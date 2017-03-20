@@ -16,25 +16,117 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <script>
-    $(document).ready(function(){
+
+    function curClickD(nowName) {
+      // console.log(nowName);
+      var rTitle = document.getElementById('recipe-title');
+      // console.log(nowName);
+      rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
+
+
+      dbname = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
         var db = JSON.stringify(data);
-        console.log(db);
+        // console.log(db);
 
         var parse = JSON.parse(db);
         var recipeList = parse.Items;
 
-        console.log(recipeList.length);
+        var direc_in_box = document.getElementById('direc_in_content');
+        var direc_step_box = document.getElementById('direc_step_content');
+        var image_box = document.getElementById('food-image');
+        for (i = 0; i < recipeList.length; i++) {
+
+          var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
+          // console.log(curRecipe)
+          var curName = curRecipe.RecipeName;
+          var curImage = curRecipe.Image;
+
+
+          if (curName == dbname) {
+            console.log('happy')
+            console.log(curRecipe.Ingredients);
+            direc_in_box.innerText = curRecipe.Ingredients;
+            direc_step_box.innerText = curRecipe.Directions;
+            image_box.setAttribute('src', curImage);
+
+
+          }
+
+        }
+      })
+
+
+
+    }
+
+    function curClickI(nowName) {
+      var in_box = document.getElementById('in_content');
+
+      console.log('gg');
+      // console.log(parsedName);
+      dbname = nowName.id.substring(0,nowName.id.length-11).replace(/_/g,' ');
+      console.log(dbname);
+
+      $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
+        var db = JSON.stringify(data);
+        // console.log(db);
+
+        var parse = JSON.parse(db);
+        var recipeList = parse.Items;
+
 
         for (i = 0; i < recipeList.length; i++) {
 
           var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
-          console.log(curRecipe)
+          // console.log(curRecipe)
           var curName = curRecipe.RecipeName;
           var curImage = curRecipe.Image;
 
-          console.log(curName);
-          console.log(curImage);
+
+          if (curName == dbname) {
+            console.log('happy')
+            console.log(curRecipe.Ingredients);
+
+
+
+            // var i_elem = document.createElement('p');
+            in_content.innerText = curRecipe.Ingredients;
+            break;
+            // in_box.appendChild(i_elem);
+
+          }
+
+        }
+      })
+
+
+
+
+    }
+
+
+
+
+    $(document).ready(function(){
+      $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
+        var db = JSON.stringify(data);
+        // console.log(db);
+
+        var parse = JSON.parse(db);
+        var recipeList = parse.Items;
+
+        // console.log(recipeList.length);
+
+        for (i = 0; i < recipeList.length; i++) {
+
+          var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
+          // console.log(curRecipe)
+          var curName = curRecipe.RecipeName;
+          var curImage = curRecipe.Image;
+
+          // console.log(curName);
+          // console.log(curImage);
 
           var col = document.createElement('div');
           col.setAttribute('class', 'col-sm-3');
@@ -65,20 +157,39 @@
           mods.setAttribute('class', 'links');
           over.appendChild(mods);
 
+
+          parsedName = curName.replace(/ /g,'_')
+
+
           var ingredients = document.createElement('a');
-          ingredients.setAttribute('href', '#');
+          // ingredients.setAttribute('href', '#');
           ingredients.setAttribute('data-toggle', 'modal');
           ingredients.setAttribute('data-target', '#ingModal');
-          ingredients.setAttribute('id', 'ing-link');
+          ingredients.setAttribute('id', parsedName + 'ingredients');
+          // ingredients.setAttribute('id', parsedName );
           ingredients.innerText = '\nINGREDIENTS';
           mods.appendChild(ingredients);
 
+
+          ingredients.setAttribute('onclick', "curClickI" + "(" + String(parsedName + 'ingredients') + ")");
+
+
+
           var directions = document.createElement('a');
-          directions.setAttribute('href', '#');
+          // directions.setAttribute('href', '#');
           directions.setAttribute('data-toggle', 'modal');
           directions.setAttribute('data-target', '#dirModal');
-          directions.setAttribute('id', 'dir-link');
+          directions.setAttribute('id', parsedName + 'directions');
+          directions.setAttribute('internalName', parsedName)
+          // console.log(curName);
           directions.innerText = '\nDIRECTIONS';
+          console.log(directions.id);
+          console.log(parsedName);
+          // directions.setAttribute('onclick', 'curClick(' + curName + ')');
+          directions.setAttribute('onclick', "curClickD" + "(" + String(parsedName + 'directions') + ")");
+
+
+          
           mods.appendChild(directions);
         }
       });
@@ -132,12 +243,16 @@
             <div class="modal-header">
               <h2 class="modal-title">INGREDIENTS</h2>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="in_list">
               <!-- dynamically add ingredients -->
               <!-- sample layout -->
-              <input type="checkbox"> sample ingredient<br />
-              <input type="checkbox"> sample ingredient<br />
-              <input type="checkbox"> sample ingredient<br />
+              <p id="in_content"></p>
+              <!-- <input type="checkbox"> sample ingredient<br /> -->
+              <!-- <input type="checkbox"> sample ingredient<br /> -->
+              <!-- <input type="checkbox"> sample ingredient<br /> -->
+
+
+
             </div>
             <div class="modal-footer">
               <button class="btn btn-outline-primary" data-dismiss="modal">CLOSE</button>
@@ -151,7 +266,11 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h2 class="modal-title">SUSHI</h2>
+
+
+              <h2 class="modal-title" id='recipe-title'></h2>
+               
+
                <div id="search-icon">
                 <span class="glyphicon glyphicon-search"></span>
                </div>
@@ -162,27 +281,28 @@
             <div class="modal-body">
               <!-- dynamically add directions -->
               <div id="food-image-container">
-                <img id="food-image" src="https://i.ytimg.com/vi/jPLJbSp6vKY/maxresdefault.jpg">
+                <img id="food-image" src="">
               </div>
               <div class="container-fluid">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                   <div class="recipe-container">
                   <div class="recipe-column" id="ingredients">
-                    <ul>
-                      <li>1 cup of rice</li>
+                    <ul id='direc_in_content'>
+<!--                       <li>1 cup of rice</li>
                       <li>1 sheet of seaweed</li>
                       <li>3 slices of sashimi-grade tuna</li>
                       <li>3 slices of sashimi-grade salmon</li>
                       <li>1/2 cup of rice vinegar</li>
-                      <li>
+                      <li> -->
                     </ul>
                   </div>
                   <div class="recipe-column" id="preparation">
                     <h2>Preparation</h2>
-                    <p>1. Put the rice on the seaweed.</p>
+                    <p id='direc_step_content'></p>
+<!--                     <p>1. Put the rice on the seaweed.</p>
                     <p>2. Put the fish on the rice.</p>
-                    <p>3. Roll it up.</p>
+                    <p>3. Roll it up.</p> -->
                   </div>
                   </div>
                 </div>
