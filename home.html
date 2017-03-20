@@ -21,7 +21,7 @@
       // console.log(nowName);
       var rTitle = document.getElementById('recipe-title');
       // console.log(nowName);
-      rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
+      rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ').toUpperCase();
 
       dbname = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
@@ -280,6 +280,7 @@
                 <div class="col-sm-6">
                   <div class="recipe-container">
                   <div class="recipe-column" id="ingredients">
+                    <h2>Ingredients</h2>
                     <ul id='direc_in_content'>
 <!--                       <li>1 cup of rice</li>
                       <li>1 sheet of seaweed</li>
@@ -290,7 +291,7 @@
                     </ul>
                   </div>
                   <div class="recipe-column" id="preparation">
-                    <h2>preparation</h2>
+                    <h2>Preparation</h2>
                     <p id='direc_step_content'></p>
 <!--                     <p>1. Put the rice on the seaweed.</p>
                     <p>2. Put the fish on the rice.</p>
