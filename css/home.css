@@ -17,6 +17,7 @@ body {
 	background-attachment: fixed;
 	text-align: center;
 	color: #FFFFFF;
+	padding-right: 0 !important;
 }
 
 img.bg {
