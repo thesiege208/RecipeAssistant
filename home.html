@@ -23,7 +23,6 @@
       // console.log(nowName);
       rTitle.innerText = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
 
-
       dbname = nowName.id.substring(0,nowName.id.length-10).replace(/_/g,' ');
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
         var db = JSON.stringify(data);
@@ -42,22 +41,15 @@
           var curName = curRecipe.RecipeName;
           var curImage = curRecipe.Image;
 
-
           if (curName == dbname) {
-            console.log('happy')
+            console.log('happy');
             console.log(curRecipe.Ingredients);
             direc_in_box.innerText = curRecipe.Ingredients;
             direc_step_box.innerText = curRecipe.Directions;
             image_box.setAttribute('src', curImage);
-
-
           }
-
         }
       })
-
-
-
     }
 
     function curClickI(nowName) {
@@ -75,7 +67,6 @@
         var parse = JSON.parse(db);
         var recipeList = parse.Items;
 
-
         for (i = 0; i < recipeList.length; i++) {
 
           var curRecipe = JSON.parse(JSON.stringify(recipeList[i]));
@@ -83,30 +74,30 @@
           var curName = curRecipe.RecipeName;
           var curImage = curRecipe.Image;
 
-
           if (curName == dbname) {
-            console.log('happy')
+            console.log('happy');
             console.log(curRecipe.Ingredients);
 
+            document.getElementById('in_list').innerHTML = '';
+            var ingred = curRecipe.Ingredients.split("\n");
+            console.log(ingred);
+            for (i = 0; i < ingred.length; i++) {
+              var label= document.createElement("label");
+              var item = document.createTextNode(" " + ingred[i]);
+              var checkbox = document.createElement('input');
+              checkbox.setAttribute('type', 'checkbox');
+              label.appendChild(checkbox);
+              label.appendChild(item);
+              document.getElementById('in_list').appendChild(label);
+              document.getElementById('in_list').appendChild(document.createElement("br"));
+            }
 
-
-            // var i_elem = document.createElement('p');
-            in_content.innerText = curRecipe.Ingredients;
+            // in_content.innerText = curRecipe.Ingredients;
             break;
-            // in_box.appendChild(i_elem);
-
           }
-
         }
       })
-
-
-
-
     }
-
-
-
 
     $(document).ready(function(){
       $.get("https://kzhe8vy1yd.execute-api.us-east-1.amazonaws.com/prod/TaskWS?TableName=Recipes", function(data){
@@ -157,39 +148,45 @@
           mods.setAttribute('class', 'links');
           over.appendChild(mods);
 
-
           parsedName = curName.replace(/ /g,'_')
-
 
           var ingredients = document.createElement('a');
           // ingredients.setAttribute('href', '#');
           ingredients.setAttribute('data-toggle', 'modal');
           ingredients.setAttribute('data-target', '#ingModal');
           ingredients.setAttribute('id', parsedName + 'ingredients');
+          ingredients.innerText = "\n";
+          var iIcon = document.createElement('span');
+          iIcon.setAttribute('class', 'glyphicon glyphicon-shopping-cart');
+          iIcon.setAttribute('font-size', '20px');
+          var iText = document.createElement('span');
+          iText.innerText = ' INGREDIENTS\n';
+          ingredients.appendChild(iIcon);
+          ingredients.appendChild(iText)
           // ingredients.setAttribute('id', parsedName );
-          ingredients.innerText = '\nINGREDIENTS';
           mods.appendChild(ingredients);
 
-
           ingredients.setAttribute('onclick', "curClickI" + "(" + String(parsedName + 'ingredients') + ")");
-
-
 
           var directions = document.createElement('a');
           // directions.setAttribute('href', '#');
           directions.setAttribute('data-toggle', 'modal');
           directions.setAttribute('data-target', '#dirModal');
           directions.setAttribute('id', parsedName + 'directions');
-          directions.setAttribute('internalName', parsedName)
+          directions.setAttribute('internalName', parsedName);
           // console.log(curName);
-          directions.innerText = '\nDIRECTIONS';
+          var dIcon = document.createElement('span');
+          dIcon.setAttribute('class', 'glyphicon glyphicon-th-list');
+          dIcon.setAttribute('font-size', '20px');
+          var dText = document.createElement('span');
+          dText.innerText = ' DIRECTIONS';
+          directions.appendChild(dIcon);
+          directions.appendChild(dText);
+
           console.log(directions.id);
           console.log(parsedName);
           // directions.setAttribute('onclick', 'curClick(' + curName + ')');
           directions.setAttribute('onclick', "curClickD" + "(" + String(parsedName + 'directions') + ")");
-
-
-          
           mods.appendChild(directions);
         }
       });
@@ -244,15 +241,11 @@
               <h2 class="modal-title">INGREDIENTS</h2>
             </div>
             <div class="modal-body" id="in_list">
-              <!-- dynamically add ingredients -->
               <!-- sample layout -->
-              <p id="in_content"></p>
+              <!-- <p id="in_content"></p> -->
               <!-- <input type="checkbox"> sample ingredient<br /> -->
               <!-- <input type="checkbox"> sample ingredient<br /> -->
               <!-- <input type="checkbox"> sample ingredient<br /> -->
-
-
-
             </div>
             <div class="modal-footer">
               <button class="btn btn-outline-primary" data-dismiss="modal">CLOSE</button>
@@ -267,9 +260,7 @@
           <div class="modal-content">
             <div class="modal-header">
 
-
               <h2 class="modal-title" id='recipe-title'></h2>
-               
 
                <div id="search-icon">
                 <span class="glyphicon glyphicon-search"></span>
@@ -279,9 +270,9 @@
                </div>
             </div>
             <div class="modal-body">
-              <!-- dynamically add directions -->
+
               <div id="food-image-container">
-                <img id="food-image" src="">
+                <img id="food-image" class="img-responsive" src="">
               </div>
               <div class="container-fluid">
                 <div class="col-sm-3"></div>
@@ -299,7 +290,7 @@
                     </ul>
                   </div>
                   <div class="recipe-column" id="preparation">
-                    <h2>Preparation</h2>
+                    <h2>preparation</h2>
                     <p id='direc_step_content'></p>
 <!--                     <p>1. Put the rice on the seaweed.</p>
                     <p>2. Put the fish on the rice.</p>
