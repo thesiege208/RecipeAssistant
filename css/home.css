@@ -218,6 +218,13 @@ button {
 	padding-bottom: 5px;
 }
 
+#direc-in-content  {
+	color: #196d4e;
+	font-size: 16px;
+	font-family: 'Alegreya Sans', sans-serif;
+	padding-bottom: 5px;
+}
+
 .recipe-column h2 {
 	text-align: left;
 	font-size: 24px;
@@ -234,9 +241,14 @@ button {
 	font-family: 'Alegreya Sans', sans-serif;
 }
 
-#preparation p {
+#direc_step_content {
 	text-align: left;
+	line-height: 2.0rem;
 	font-size: 20px;	
+}
+
+br {
+	line-height: 150%;
 }
 
 .col-sm-6 {
